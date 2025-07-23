@@ -1,0 +1,366 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/quizzes": {
+      "post": {
+        "operationId": "QuizzesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuizDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetShortQuizDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Quizzes"
+        ]
+      },
+      "get": {
+        "operationId": "QuizzesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetShortQuizDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Quizzes"
+        ]
+      }
+    },
+    "/quizzes/{id}": {
+      "get": {
+        "operationId": "QuizzesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDetailedQuizDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Quizzes"
+        ]
+      },
+      "patch": {
+        "operationId": "QuizzesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuizDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetShortQuizDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Quizzes"
+        ]
+      },
+      "delete": {
+        "operationId": "QuizzesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Quizzes"
+        ]
+      }
+    },
+    "/questions": {
+      "post": {
+        "operationId": "QuestionsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuestionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Questions"
+        ]
+      }
+    },
+    "/questions/{quizId}": {
+      "get": {
+        "operationId": "QuestionsController_findAllByQuizId",
+        "parameters": [
+          {
+            "name": "quizId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Questions"
+        ]
+      }
+    },
+    "/questions/{id}": {
+      "patch": {
+        "operationId": "QuestionsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuestionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Questions"
+        ]
+      },
+      "delete": {
+        "operationId": "QuestionsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Questions"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Quiz API",
+    "description": "Quiz API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "CreateQuizDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ]
+      },
+      "GetShortQuizDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ]
+      },
+      "GetQuestionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "type"
+        ]
+      },
+      "GetDetailedQuizDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetQuestionDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "questions"
+        ]
+      },
+      "UpdateQuizDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateQuestionDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "BOOLEAN",
+              "TEXT",
+              "CHECKBOX"
+            ]
+          },
+          "quizId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "type",
+          "quizId"
+        ]
+      },
+      "UpdateQuestionDto": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}
