@@ -12,7 +12,7 @@ export class QuestionsService {
 
   async create(dto: CreateQuestionDto): Promise<GetQuestionDto> {
     const question = await this.questionsRepository.create({
-      type: dto.type as QuestionType,
+      type: dto.type,
       title: dto.title,
       quiz: {
         connect: {

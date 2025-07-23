@@ -7,6 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { CreateQuestionButtons } from "@/components/quiz/question-forms/create-question-buttons";
 import { QuestionForm } from "@/components/quiz/question-forms/question-form";
+import { Fragment } from "react";
 
 export default function QuizCreatePage() {
   const params = useParams<{ id: string }>();
@@ -28,14 +29,10 @@ export default function QuizCreatePage() {
 
       <div className="divide-y *:py-5 *:m-0">
         {quiz.data?.questions.map((question) => (
-          <>
-            <QuestionForm
-              key={question.id}
-              question={question}
-              quizId={params.id}
-            />
+          <Fragment key={question.id}>
+            <QuestionForm question={question} quizId={params.id} />
             {params?.id && <CreateQuestionButtons quizId={params.id} />}
-          </>
+          </Fragment>
         ))}
 
         {quiz.data?.questions.length === 0 && (

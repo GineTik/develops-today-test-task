@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { GhostInput } from "@/components/ui/ghost-input";
 import { ApiSchemas } from "@/services/types";
 import { useState } from "react";

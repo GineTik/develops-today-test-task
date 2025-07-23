@@ -1,5 +1,4 @@
-import { Control, FieldValues } from "react-hook-form";
-import { Path } from "react-hook-form";
+import { Control, FieldValues, Path } from "react-hook-form";
 import {
   FormField,
   FormLabel,
@@ -8,7 +7,6 @@ import {
   FormMessage,
 } from "./form";
 import { Input } from "./input";
-import { Label } from "./label";
 
 type FormInputProps<T extends FieldValues> = React.ComponentProps<"input"> & {
   name: Path<T>;

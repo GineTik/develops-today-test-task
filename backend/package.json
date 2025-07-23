@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prisma:migrate": "npx prisma migrate dev",
     "clean": "rm -rf dist",
     "build": "npm run clean && nest build && npm run postbuild",
     "postbuild": "cp -r generated dist/generated && cp -r .env dist/.env",
